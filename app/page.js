@@ -127,6 +127,11 @@ const Page = () => {
       setProducts([...products, newProduct.data]);
       form.resetFields();
       setVisible(false);
+      form.setFieldsValue({
+        title: '',
+        price: null,
+        description: '',
+      });
       message.success('Product created successfully');
     } catch (error) {
       console.error('Error creating product:', error);
@@ -153,6 +158,12 @@ const Page = () => {
       );
       setProducts(updatedProducts);
       setSelectedId(null);
+      form.setFieldsValue({
+        title: '',
+        price: null,
+        description: '',
+      });
+      setEditingProduct(null)
       setVisible(false);
       message.success('Product updated successfully');
     } catch (error) {
@@ -213,6 +224,12 @@ const Page = () => {
 
   const handleCancel = () => {
     setVisible(false);
+    form.setFieldsValue({
+      title: '',
+      price: null,
+      description: '',
+    });
+    setEditingProduct(null)
   };
 
   return (
